@@ -50,7 +50,7 @@ class ArticlesController < ApplicationController
     @article = Article.find(params[:id])
   end
   def article_params
-    params.require(:article).permit(:title,:description)
+    params.require(:article).permit(:ProductName,:description,:price)
 
   end
 
