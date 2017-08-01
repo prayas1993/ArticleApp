@@ -16,6 +16,7 @@ class ArticlesController < ApplicationController
   end
 
   def show
+    @article = Article.find(params[:id])
   end
 
   def edit
@@ -32,7 +33,7 @@ class ArticlesController < ApplicationController
     @article = Article.find(params[:id])
   end
   def article_params
-    params.require(:article).permit(:title,:description , category_ids: [])
+    params.require(:article).permit(:title,:description)
 
   end
 
