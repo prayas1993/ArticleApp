@@ -1,2 +1,11 @@
-<h1>Users#index</h1>
-<p>Find me in app/views/users/index.html.erb</p>
+<% @users.each do |user| %>
+		<div class=" contain">
+					<div class="image"><div class="content"><%= user.username %></div>
+		
+		<div class="  overlay">
+		    <div class="text img-circle"><%= link_to pluralize(user.articles.count , "article"), user_path(user) %></div>
+		 </div>
+		</div>
+		</div>
+
+<% end %> 
