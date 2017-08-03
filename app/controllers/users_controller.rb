@@ -23,7 +23,11 @@ class UsersController < ApplicationController
   end
 
   def show
-    @user_articles = @user.articles.paginate(page: params[:page], per_page: 5)
+    if @user.admin?
+    @user_articles = @user.articles.paginate(page: params[:page], per_page: 5) 
+    else 
+    @user_articles = @user.articles.where(:isactive => true).paginate(page: params[:page], per_page: 5)
+   end
   end
 
   def edit

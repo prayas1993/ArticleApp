@@ -5,11 +5,14 @@ Rails.application.routes.draw do
   post 'login', to: 'sessions#create'
   delete 'logout', to: 'sessions#destroy'
  
-  resources :articles do
-   collection do	
-    post 'active' , to:'articles#active'
- end
-end
+  resources :articles 
+ 
+  post '/articles/:id/activate' , to:'articles#active', as: "activate_article"
+  
+  get '/pricefilter' , to:'articles#pricefilter', as: "pricefilter"
+  
+  get '/applypricefilter' , to:'articles#apply_price_filter' ,as:"applypricefilter"
+
   root 'page#home'
   
   get '/about',to: 'page#about'

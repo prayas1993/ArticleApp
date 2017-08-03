@@ -1,0 +1,9 @@
+<%= form_tag '/applypricefilter',method: "get"  do %>
+
+<b>Minimum Value </b><%= text_field_tag :min_value %> <br>
+<b>Maximum Value </b><%= text_field_tag :max_value %> <br>
+
+    <%= submit_tag "Filter" %>
+
+
+<% end %>

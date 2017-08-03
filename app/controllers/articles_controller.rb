@@ -1,15 +1,17 @@
 class ArticlesController < ApplicationController
   before_action :set_article , only: [:edit , :update , :show , :destroy]
-  before_action :require_user, except: [:index, :show]
+  before_action :require_user, except: [:index, :show, :pricefilter,:apply_price_filter]
   before_action :require_same_user, only: [:edit, :update, :destroy]
 
  
 
   def index
-    @articles = Article.paginate(page: params[:page], per_page: 5)
+    if current_user && current_user.admin
+    @articles = Article.paginate(page: params[:page], per_page: 5).order('created_at DESC')
+    else
+    @articles = Article.where(:isactive=>true).paginate(page: params[:page], per_page: 5).order('created_at DESC')
+   end
   end
-
-
 
   def new
     @article = Article.new
@@ -51,14 +53,20 @@ class ArticlesController < ApplicationController
 
   def active
     @article = Article.find(params[:id])
-    if @article.isactive
-      @article.isactive=false
-    else
-      @article.isactive=true
-    end
-    redirect_to 'articles_path'
+    @article.update(isactive: !@article.isactive)
+    redirect_to articles_path
+  end
+  
+  def pricefilter
+    
   end
 
+  def apply_price_filter
+    @articles = Article.in_price_range(params[:min_value], params[:max_value]).paginate(page: params[:page], per_page: 5).order('created_at DESC')
+    render '/articles/index'
+  end
+
+  
   private 
   def set_article
     @article = Article.find(params[:id])

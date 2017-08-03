@@ -4,4 +4,9 @@ class Article < ActiveRecord::Base
     validates :description, presence: true, length: {minimum: 10, maximum: 300}
     validates :price, presence: true, length: {minimum: 1, maximum: 6}
     validates :user_id, presence: true
+
+    def self.in_price_range(min_value,max_value)
+    	Article.where("price >= #{min_value} and price <= #{max_value}")#(price: min_value..max_value)
+    end
+
 end
