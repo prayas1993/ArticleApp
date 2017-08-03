@@ -5,8 +5,9 @@ Rails.application.routes.draw do
   post 'login', to: 'sessions#create'
   delete 'logout', to: 'sessions#destroy'
  
-  resources :articles 
- 
+  resources :articles do
+     resources :comments
+  end 
   post '/articles/:id/activate' , to:'articles#active', as: "activate_article"
   
   get '/pricefilter' , to:'articles#pricefilter', as: "pricefilter"
