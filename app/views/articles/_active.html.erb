@@ -1,0 +1,5 @@
+<% if article.active%>
+ <%= link_to "Deactivate this article",articles_active_path(article), class: " btn btn-xs btn-primary" %>
+ <%else%>
+ <%= link_to "Activate this article",articles_active_path(article), class: " btn btn-xs btn-primary" %>
+ <%end%>

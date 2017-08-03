@@ -49,6 +49,16 @@ class ArticlesController < ApplicationController
     redirect_to articles_path
   end
 
+  def active
+    @article = Article.find(params[:id])
+    if @article.isactive
+      @article.isactive=false
+    else
+      @article.isactive=true
+    end
+    redirect_to 'articles_path'
+  end
+
   private 
   def set_article
     @article = Article.find(params[:id])
