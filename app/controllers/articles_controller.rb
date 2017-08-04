@@ -56,17 +56,7 @@ class ArticlesController < ApplicationController
     @article.update(isactive: !@article.isactive)
     redirect_to articles_path
   end
-  
-  def pricefilter
-    
-  end
 
-  def apply_price_filter
-    @articles = Article.in_price_range(params[:min_value], params[:max_value]).paginate(page: params[:page], per_page: 5).order('created_at DESC')
-    render '/articles/index'
-  end
-
-  
   private 
   def set_article
     @article = Article.find(params[:id])

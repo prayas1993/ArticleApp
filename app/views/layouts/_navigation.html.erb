@@ -22,9 +22,10 @@
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Filter Products <span class="caret"></span></a>
               <ul class="dropdown-menu">
                 <li><%= link_to "Filter  by price" , pricefilter_path %></li>
-                <li><a href="#">Something else here</a></li>
                 <li role="separator" class="divider"></li>
-                <li><a href="#">Separated link</a></li>
+                <li><%=link_to "Activated Products",applyactivatedfilter_path if current_user.admin? %></li>
+                <li role="separator" class="divider"></li>
+                <li><%=link_to "Deactivated Products",applydeactivatedfilter_path if current_user.admin? %></li>
                 <li role="separator" class="divider"></li>
                 <li><a href="#">One more separated link</a></li>
               </ul>
