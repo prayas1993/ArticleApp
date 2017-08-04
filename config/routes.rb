@@ -1,14 +1,7 @@
 Rails.application.routes.draw do
  
 
-  get 'filter/activated'
-
-  get 'filter/deactivated'
-
-  get 'filter/pricefilter'
-
-  get 'filter/apply_price_filter'
-
+ 
   get 'login', to: 'sessions#new'
   post 'login', to: 'sessions#create'
   delete 'logout', to: 'sessions#destroy'
@@ -16,6 +9,8 @@ Rails.application.routes.draw do
   resources :articles do
      resources :comments
   end 
+  
+  resources :categories , except:[:destroy]
 
   post '/articles/:id/activate' , to:'articles#active', as: "activate_article"
   

@@ -1,8 +1,5 @@
 <%= form_for([@article,@article.comments.build]) do |f| %>
   
-
- 
-
   <div class="field">
     <%= f.label :content %>
     <%= f.text_area :content %>
@@ -11,6 +8,6 @@
   
 
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit%>
   </div>
 <% end %>
