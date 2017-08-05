@@ -1,4 +1,6 @@
 class Article < ActiveRecord::Base
+    has_many :article_categories
+    has_many :categories, through: :article_categories
     has_many :comments
     belongs_to :user 
 	validates :ProductName, presence: true, length: {minimum: 3, maximum: 50}
