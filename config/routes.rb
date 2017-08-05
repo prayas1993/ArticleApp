@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
  
-
+  root 'page#home'
  
   get 'login', to: 'sessions#new'
   post 'login', to: 'sessions#create'
@@ -22,7 +22,7 @@ Rails.application.routes.draw do
   
   get '/deactivated' , to:'filter#deactivated' , as:"applydeactivatedfilter"
 
-  root 'page#home'
+  
   
   get '/about',to: 'page#about'
 

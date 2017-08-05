@@ -15,11 +15,13 @@
             <%= link_to "View all articles", articles_path, class: "btn btn-xs btn-success" %>
           
           </div>
-            <h2>Comments</h2>
+          </div>
+         
+      <div>
+         <h2>Comments</h2>
               <%= render @article.comments %>
           <br>
             <% if logged_in?%>
              <%= render "comments/form"  %>
             <%end%>
-          </div>
-
+      </div>      
